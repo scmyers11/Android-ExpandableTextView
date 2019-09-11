@@ -30,7 +30,7 @@
         android:id="@+id/expandableTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lorem_ipsum"
+        android:text="@string/short_lorem"
         android:maxLines="5"
         android:ellipsize="end"
         app:animation_duration="750"/>

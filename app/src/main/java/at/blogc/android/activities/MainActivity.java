@@ -3,6 +3,8 @@ package at.blogc.android.activities;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -49,6 +51,11 @@ public class MainActivity extends AppCompatActivity
         // or set them separately
         expandableTextView.setExpandInterpolator(new OvershootInterpolator());
         expandableTextView.setCollapseInterpolator(new OvershootInterpolator());
+        expandableTextView.setmToggleButton(buttonToggle);
+
+        String htmlString = getString(R.string.html);
+        Spanned htmlSpanned = Html.fromHtml(htmlString);
+        expandableTextView.setText(htmlSpanned);
 
         // toggle the ExpandableTextView
         buttonToggle.setOnClickListener(new View.OnClickListener()

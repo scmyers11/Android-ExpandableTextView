@@ -9,6 +9,7 @@ import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ public class ExpandableTextView extends TextView
     private boolean animating;
     private boolean expanded;
     private int collapsedHeight;
+    private View mToggleButton;
 
     public ExpandableTextView(final Context context)
     {
@@ -249,6 +251,19 @@ public class ExpandableTextView extends TextView
         return false;
     }
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+
+        if (mToggleButton != null) {
+            if(getLineCount() >= this.maxLines){
+                mToggleButton.setVisibility(VISIBLE);
+            }else {
+                mToggleButton.setVisibility(GONE);
+            }
+        }
+    }
+
     //endregion
 
     //region public getters and setters
@@ -357,6 +372,14 @@ public class ExpandableTextView extends TextView
         {
             onExpandListener.onExpand(this);
         }
+    }
+
+    public View getmToggleButton() {
+        return mToggleButton;
+    }
+
+    public void setmToggleButton(View mToggleButton) {
+        this.mToggleButton = mToggleButton;
     }
 
     //region public interfaces
